@@ -3,7 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style type="text/css">
+		  			<%@include file="Formulario/css/style.css" %>		  			
+			</style>
+
+
 <title>NO ENCONTRADO</title>
 </head>
 <body>

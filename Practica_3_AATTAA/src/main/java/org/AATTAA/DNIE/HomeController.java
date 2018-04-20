@@ -37,15 +37,15 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/CompruebaBBDD", method = RequestMethod.POST)
-	public String sesion(HttpServletRequest request, @RequestParam("nombre") String usuario,@RequestParam("nif") String nif,HttpServletRequest req,Locale locale, Model model) {
+	public String sesion(HttpServletRequest request, @RequestParam("nombre") String nick,@RequestParam("nif") String nif,HttpServletRequest req,Locale locale, Model model) {
 		HttpSession sesion = request.getSession();
 		Usuario db= new Usuario();
 		
-		if (dao.BuscarUsuario(nif)==null) {
+		if (dao.BuscarUsuario(nif,nick)==null) {
 			return "Noexiste";
 		
 			}else { 
-				Usuario user=dao.BuscarUsuario(nif);
+				Usuario user=dao.BuscarUsuario(nif,nick);
 		       sesion.setAttribute("nusuario", user);
 		       request.setAttribute("nusuario", user);
 
@@ -57,21 +57,27 @@ public class HomeController {
 	@RequestMapping(value = "/Registro", method = RequestMethod.POST)
 	public String registropost(HttpServletRequest request,Locale locale, Model model) {
 		HttpSession sesion = request.getSession();
-
-
+		try {
 	    Usuario user=od.LeerNIF();
-	    if (dao.BuscarUsuario(user.getNif())==null) {
+		
+	    String nickname=user.getNombre().substring(0,1)+ user.getApellido1()+user.getApellido2().substring(0,1);
+		   user.setNick(nickname);
+	    if (dao.BuscarUsuario(user.getNif(),user.getNick())==null) {  
 	    	dao.InsertaUsuario(user);
+	    	model.addAttribute("nick", "Tu nickname será:"+nickname);
 		    sesion.setAttribute("nusuario", user);
 		    request.setAttribute("nusuario", user);	    
-		       String nickname=user.getNombre().substring(0,1)+ user.getApellido1()+user.getApellido2().substring(0,1);
-			   model.addAttribute("nick", "Tu nickname será:"+nickname);
+
 		    return "Existe";	
 	    }
 	   
-	    else  model.addAttribute("yaExiste", "Ese usuario ya está registrado, puedes logearte con tus datos"); 
+	    else   model.addAttribute("yaExiste", "Ese usuario ya está registrado, puedes logearte con tus datos"); 
 	    return "index";
-	    
+    
+	}catch(Exception e) {
+		model.addAttribute("yaExiste", "No ha insertado ninguna tarjeta");
+	}
+		return "index";
 	}
 		
 

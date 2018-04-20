@@ -12,12 +12,14 @@ public class Usuario implements Serializable {
     private String apellido1;
     private String apellido2;
     private String nif;
+    private String nick;
     
-    public Usuario(String n,String a1,String a2,String ni){
+    public Usuario(String n,String a1,String a2,String ni,String nic){
         nombre=n;
         apellido1=a1;
         apellido2=a2;
         nif=ni;
+        nick=nic;
     }
     
     public Usuario(){
@@ -25,6 +27,7 @@ public class Usuario implements Serializable {
     	apellido1="";
     	apellido2="";
     	nif="";
+    	nick="";
     	}
     
     
@@ -58,6 +61,14 @@ public class Usuario implements Serializable {
 
     public void setNif(String nif) {
         this.nif = nif;
+    }
+    
+    public String getNick() {
+        return nick;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
     }
           
 }

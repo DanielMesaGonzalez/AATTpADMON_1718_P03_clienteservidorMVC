@@ -28,7 +28,7 @@ public class UsuariosDAO implements UsuarioDAOInterface{
 	public void InsertaUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
 		String sql = "insert into usuarios values(?,?,?,?,?)";
-		Object[ ] parametros = {usuario.getNombre(),usuario.getApellido1(),usuario.getNif(),usuario.getApellido2()};
+		Object[ ] parametros = {usuario.getNombre(),usuario.getApellido1(),usuario.getNif(),usuario.getApellido2(),usuario.getNick()};
 		this.jdbcTemplate.update(sql,parametros);
 	}
 
@@ -43,9 +43,9 @@ public class UsuariosDAO implements UsuarioDAOInterface{
 	}
 
 	@Override
-	public Usuario BuscarUsuario(String nif) {
-		String sql = "select * from usuarios where DNI = ?";
-		Object[] parametros = {nif};   //Array de objetos
+	public Usuario BuscarUsuario(String nif, String nick) {    //He incluido nick
+		String sql = "select * from usuarios where DNI = ? and Nick= ?";    
+		Object[] parametros = {nif,nick};   //Array de objetos
 		UsuarioMapper mapper = new UsuarioMapper();
 		List<Usuario> usuarios = this.jdbcTemplate.query(sql, parametros, mapper);
 		if (usuarios.isEmpty()) return null;

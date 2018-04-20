@@ -6,6 +6,8 @@ import java.security.cert.CertificateException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
+
 import javax.smartcardio.*;
 
 /**
@@ -250,7 +252,7 @@ public class ObtenerDatos {
         byte[] nombre= null;
         boolean pos=false;
         int i=0,j=0;
-        String DNI="",NOMBRE="",n="",a1="",a2="";
+        String DNI="",NOMBRE="",n="",a1="",a2="", NICK="";
         
         
         //Se extrae bytes del nombre y apellidos despues de encontrar TIPO UTF8
@@ -299,15 +301,13 @@ public class ObtenerDatos {
         String[] nomb,apellidos;
         nomb=NOMBRE.split(",");
         apellidos=NOMBRE.split(",");
-        
-        nomb=nomb[1].split("\\(AUTENTICACIÓN\\)");
+        nomb=nomb[1].split(Pattern.quote("(AUTENTICACIÃ“N)"));
         n=nomb[0].trim();//Quitar espacios nombre
         
         apellidos=apellidos[0].split(" ");
         a1=apellidos[0];
         a2=apellidos[1];
-        
-        Usuario user= new Usuario(n, a1, a2,DNI);
+        Usuario user= new Usuario(n, a1, a2, DNI, NICK);
         
        return user;
     }
