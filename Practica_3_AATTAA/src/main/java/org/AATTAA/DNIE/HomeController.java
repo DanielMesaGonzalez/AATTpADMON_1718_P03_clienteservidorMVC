@@ -42,7 +42,7 @@ public class HomeController {
 		Usuario db= new Usuario();
 		
 		if (dao.BuscarUsuario(nif,nick)==null) {
-			return "Noexiste";
+			return "NoExiste";
 		
 			}else { 
 				Usuario user=dao.BuscarUsuario(nif,nick);
