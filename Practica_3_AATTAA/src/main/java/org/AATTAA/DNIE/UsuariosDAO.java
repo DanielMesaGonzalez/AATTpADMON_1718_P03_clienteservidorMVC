@@ -23,15 +23,16 @@ public class UsuariosDAO implements UsuarioDAOInterface{
 	public void setDataSource(DataSource dataSource) {
 	this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-
+	
+//Método encargado de introducir los datos de un nuevo usuario en la BBDD quedando así registrado en ella.
 	@Override
 	public void InsertaUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
 		String sql = "insert into usuarios values(?,?,?,?,?)";
 		Object[ ] parametros = {usuario.getNombre(),usuario.getApellido1(),usuario.getNif(),usuario.getApellido2(),usuario.getNick()};
 		this.jdbcTemplate.update(sql,parametros);
 	}
-
+	
+//Método encargado de mostrar los datos de un usuario registrado en la BBDD.
 	@Override
 	public List<Usuario> leeUsuario() {
 		String sql= "select * from usuarios";
@@ -41,9 +42,10 @@ public class UsuariosDAO implements UsuarioDAOInterface{
 		
 		return usuarios ;
 	}
-
+	
+//Método encargado de realizar la búsqueda de un usuario en la BBDD.
 	@Override
-	public Usuario BuscarUsuario(String nif, String nick) {    //He incluido nick
+	public Usuario BuscarUsuario(String nif, String nick) {    
 		String sql = "select * from usuarios where DNI = ? and Nick= ?";    
 		Object[] parametros = {nif,nick};   //Array de objetos
 		UsuarioMapper mapper = new UsuarioMapper();

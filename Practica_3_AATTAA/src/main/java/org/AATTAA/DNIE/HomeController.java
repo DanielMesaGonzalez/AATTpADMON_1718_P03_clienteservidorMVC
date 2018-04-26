@@ -25,16 +25,22 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
-	private UsuarioDAOInterface dao;
+	private UsuarioDAOInterface dao;  //Declaramos el objeto beans (Definido en el servlet-context.xml).
 	private ObtenerDatos od=new ObtenerDatos();
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	
+	//Respuesta del servidor GET al accceder a la URL mostrando la página principal.
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET) 
 	public String home(Locale locale, Model model) {
 		
-		return "index";
+		return "index"; // Te envía a la página principal
 	}
+	
+	//Método para comprobar si un usuario está registrado mediante su NIF y su NICK, en caso de no estarlo 
+	//lo redirecciona al NoExiste.jsp(Posibilidad de registrarte), y en caso contrario al Existe.jsp (Muestra los datos del usuario guardados en la BBDD).
 	
 	@RequestMapping(value = "/CompruebaBBDD", method = RequestMethod.POST)
 	public String sesion(HttpServletRequest request, @RequestParam("nombre") String nick,@RequestParam("nif") String nif,HttpServletRequest req,Locale locale, Model model) {
@@ -53,6 +59,9 @@ public class HomeController {
 				return "Existe";
 			}
 	}
+	
+	//Método encargado de registrar al nuevo usuario mediante la lectura de su DNIe.
+	//El método recoge sus datos y los guarda en un objeto nusuario. Comprueba que se ha introducido una tarjeta, en caso contrario lo notifica y lo redirecciona a la página principal.
 	
 	@RequestMapping(value = "/Registro", method = RequestMethod.POST)
 	public String registropost(HttpServletRequest request,Locale locale, Model model) {
