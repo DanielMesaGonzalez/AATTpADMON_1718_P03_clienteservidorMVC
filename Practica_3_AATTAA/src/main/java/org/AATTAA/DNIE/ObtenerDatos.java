@@ -62,7 +62,7 @@ public class ObtenerDatos {
         int offset = 0;
         String completName = null;
 
-        //[1] PRÁCTICA 3. Punto 1.a
+        //[1] PRACTICA 3. Punto 1.a
  
         /**Comando SELECT: 
          * Este comando permite la selección de fichero dedicado (DF) o de un fichero elemental (EF).
@@ -81,7 +81,7 @@ public class ObtenerDatos {
             return null;
         }
 
-        //[2] PRÁCTICA 3. Punto 1.a 
+        //[2] PRACTICA 3. Punto 1.a 
         
          /** Comando SELECT:
           *
@@ -100,7 +100,7 @@ public class ObtenerDatos {
             return null;
         }
 
-        //[3] PRÁCTICA 3. Punto 1.a
+        //[3] PRACTICA 3. Punto 1.a
         
          /** Comando SELECT: 
           * 
@@ -126,7 +126,7 @@ public class ObtenerDatos {
         int bloque = 0;
 
         do {
-             //[4] PRÁCTICA 3. Punto 1.b
+             //[4] PRACTICA 3. Punto 1.b
              /**Los siguientes valores hacen referencia al comando READ BINARY
               * 
               */
@@ -135,7 +135,7 @@ public class ObtenerDatos {
             final byte INS = (byte) 0xB0;// Especifíca que el tipo de comando es un READ BINARY.
             final byte LE = (byte) 0xFF;//  LE: Número de bytes a leer (si está a 0, lee hasta 256).
 
-            //[4] PRÁCTICA 3. Punto 1.b
+            //[4] PRACTICA 3. Punto 1.b
             command = new byte[]{CLA, INS, (byte) bloque/*P1*/, (byte) 0x00/*P2*/, LE};//Realiza una lectura de todos los bytes excepto el rango P1 y P2, en este caso están a cero. 
             r = ch.transmit(new CommandAPDU(command));
 
@@ -257,6 +257,7 @@ public class ObtenerDatos {
         
         //Se extrae bytes del nombre y apellidos despues de encontrar TIPO UTF8
         //Este for es para el DNI
+        
         for(i=0;i<datos.length;i++){
         
             

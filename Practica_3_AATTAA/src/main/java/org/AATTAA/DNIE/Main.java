@@ -28,8 +28,5 @@ public class Main {
         Usuario user = od.LeerNIF();
         if(user!=null)
             System.out.println("usuario: "+user.toString());
-        
-        //TAREA 3. AUTENTICAR EL CLIENTE CON EL SERVIDOR
-        
     }
 }

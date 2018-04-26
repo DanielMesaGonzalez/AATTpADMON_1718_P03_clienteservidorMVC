@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author Salvador
+ *
+ */
 @Repository
 public class UsuariosDAO implements UsuarioDAOInterface{
 	
@@ -23,8 +27,10 @@ public class UsuariosDAO implements UsuarioDAOInterface{
 	public void setDataSource(DataSource dataSource) {
 	this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-	
-//Método encargado de introducir los datos de un nuevo usuario en la BBDD quedando así registrado en ella.
+	/* Método encargado de introducir los datos de un nuevo usuario en la BBDD quedando así registrado en ella.
+	 * (non-Javadoc)
+	 * @see org.AATTAA.DNIE.UsuarioDAOInterface#InsertaUsuario(org.AATTAA.DNIE.Usuario)
+	 */
 	@Override
 	public void InsertaUsuario(Usuario usuario) {
 		String sql = "insert into usuarios values(?,?,?,?,?)";
@@ -32,7 +38,11 @@ public class UsuariosDAO implements UsuarioDAOInterface{
 		this.jdbcTemplate.update(sql,parametros);
 	}
 	
-//Método encargado de mostrar los datos de un usuario registrado en la BBDD.
+
+	/*	Método encargado de mostrar los datos de un usuario registrado en la BBDD.
+	 *  (non-Javadoc)
+	 * @see org.AATTAA.DNIE.UsuarioDAOInterface#leeUsuario()
+	 */
 	@Override
 	public List<Usuario> leeUsuario() {
 		String sql= "select * from usuarios";
@@ -43,7 +53,11 @@ public class UsuariosDAO implements UsuarioDAOInterface{
 		return usuarios ;
 	}
 	
-//Método encargado de realizar la búsqueda de un usuario en la BBDD.
+
+	/*	Método encargado de realizar la búsqueda de un usuario en la BBDD.
+	 *  (non-Javadoc)
+	 * @see org.AATTAA.DNIE.UsuarioDAOInterface#BuscarUsuario(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public Usuario BuscarUsuario(String nif, String nick) {    
 		String sql = "select * from usuarios where DNI = ? and Nick= ?";    

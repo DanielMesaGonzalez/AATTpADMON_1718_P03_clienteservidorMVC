@@ -5,6 +5,11 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 
+/**
+ * Clase para mapear los parametros de Usuario y colocarlo en el objeto del usuario.
+ * @author Salvador
+ *
+ */
 public class UsuarioMapper implements RowMapper<Usuario>{
 
 	public Usuario mapRow(ResultSet rs, int rowNum) throws SQLException{

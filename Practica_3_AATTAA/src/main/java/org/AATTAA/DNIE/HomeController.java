@@ -31,17 +31,34 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
-	//Respuesta del servidor GET al accceder a la URL mostrando la página principal.
 	
+	
+	/**
+	 * Respuesta del servidor GET al accceder a la URL mostrando la página principal.
+	 * @param locale
+	 * @param model
+	 * @return vista que se devuelve al cliente
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET) 
 	public String home(Locale locale, Model model) {
 		
 		return "index"; // Te envía a la página principal
 	}
 	
-	//Método para comprobar si un usuario está registrado mediante su NIF y su NICK, en caso de no estarlo 
-	//lo redirecciona al NoExiste.jsp(Posibilidad de registrarte), y en caso contrario al Existe.jsp (Muestra los datos del usuario guardados en la BBDD).
-	
+	/**
+	 * 
+	 * Método para comprobar si un usuario está registrado mediante su NIF y su NICK, 
+	 * en caso de no estarlo  lo redirecciona al NoExiste.jsp(Posibilidad de registrarte), 
+	 * y en caso contrario al Existe.jsp (Muestra los datos del usuario guardados en la BBDD).
+	 * 
+	 * @param request Object de peticion
+	 * @param nick nick del usuario creado en el registro
+	 * @param nif contraseña del usuario
+	 * @param req Object de peticion
+	 * @param locale parametro de Spring
+	 * @param model parametro de la vista en Spring
+	 * @return vista que se devuelve al cliente
+	 */
 	@RequestMapping(value = "/CompruebaBBDD", method = RequestMethod.POST)
 	public String sesion(HttpServletRequest request, @RequestParam("nombre") String nick,@RequestParam("nif") String nif,HttpServletRequest req,Locale locale, Model model) {
 		HttpSession sesion = request.getSession();
@@ -60,9 +77,17 @@ public class HomeController {
 			}
 	}
 	
-	//Método encargado de registrar al nuevo usuario mediante la lectura de su DNIe.
-	//El método recoge sus datos y los guarda en un objeto nusuario. Comprueba que se ha introducido una tarjeta, en caso contrario lo notifica y lo redirecciona a la página principal.
 	
+	/**
+	 * Método encargado de registrar al nuevo usuario mediante la lectura de su DNIe.
+	 * El método recoge sus datos y los guarda en un objeto nusuario. Comprueba que se ha introducido una tarjeta, en caso contrario lo notifica y lo redirecciona a la página principal.
+	 * 
+	 * @param request
+	 * @param locale
+	 * @param model
+	 * @return vista que se devuelve al cliente
+	 * @exception La excepción recogerá el error,en el caso de que no se detecte en el tarjetero el DNI y devolvera a la vista home
+	 */
 	@RequestMapping(value = "/Registro", method = RequestMethod.POST)
 	public String registropost(HttpServletRequest request,Locale locale, Model model) {
 		HttpSession sesion = request.getSession();
