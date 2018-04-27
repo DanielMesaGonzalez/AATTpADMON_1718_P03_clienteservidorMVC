@@ -4,7 +4,7 @@ import java.util.List;
 
 
 /**
- * Interfaz donde se definen los metodos a implementar básicos para manejar la BBDD
+ * Interfaz donde se definen los metodos a implementar basicos para manejar la BBDD
  * @author Salvador
  *
  */

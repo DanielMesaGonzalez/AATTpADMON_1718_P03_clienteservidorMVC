@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 import javax.smartcardio.*;
 
 /**
- * La clase ObtenerDatos implementa cuatro métodos públicos que permiten obtener
+ * La clase ObtenerDatos implementa cuatro metodos públicos que permiten obtener
  * determinados datos de los certificados de tarjetas DNIe, Izenpe y Ona.
  *
  * @author tbc
@@ -65,7 +65,7 @@ public class ObtenerDatos {
         //[1] PRACTICA 3. Punto 1.a
  
         /**Comando SELECT: 
-         * Este comando permite la selección de fichero dedicado (DF) o de un fichero elemental (EF).
+         * Este comando permite la seleccion de fichero dedicado (DF) o de un fichero elemental (EF).
          * 
          *   Primer octecto: 0x00 "CLA"
          *   Segundo octecto: 0xA4 "INS"
@@ -172,7 +172,7 @@ public class ObtenerDatos {
     
     
     /**
-     * Este método establece la conexión con la tarjeta. La función busca el
+     * Este metodo establece la conexión con la tarjeta. La función busca el
      * Terminal que contenga una tarjeta, independientemente del tipo de tarjeta
      * que sea.
      *
@@ -205,7 +205,7 @@ public class ObtenerDatos {
     }
 
     /**
-     * Este método nos permite saber el tipo de tarjeta que estamos leyendo del
+     * Este metodo nos permite saber el tipo de tarjeta que estamos leyendo del
      * Terminal, a partir del ATR de ésta.
      *
      * @param atrCard ATR de la tarjeta que estamos leyendo
@@ -236,7 +236,7 @@ public class ObtenerDatos {
     }
 
     /**
-     * Analizar los datos leídos del DNIe para obtener
+     * Analizar los datos leidos del DNIe para obtener
      *   - nombre
      *   - apellidos
      *   - NIF
@@ -245,7 +245,6 @@ public class ObtenerDatos {
      */
     private Usuario leerDatosUsuario(byte[] datos) {
         
-
         byte[] dni= new byte[9];
         int cont=0;
         int tam=-1;

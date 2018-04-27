@@ -27,7 +27,7 @@ public class UsuariosDAO implements UsuarioDAOInterface{
 	public void setDataSource(DataSource dataSource) {
 	this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-	/* Método encargado de introducir los datos de un nuevo usuario en la BBDD quedando así registrado en ella.
+	/* Metodo encargado de introducir los datos de un nuevo usuario en la BBDD quedando asi registrado en ella.
 	 * (non-Javadoc)
 	 * @see org.AATTAA.DNIE.UsuarioDAOInterface#InsertaUsuario(org.AATTAA.DNIE.Usuario)
 	 */
@@ -39,7 +39,7 @@ public class UsuariosDAO implements UsuarioDAOInterface{
 	}
 	
 
-	/*	Método encargado de mostrar los datos de un usuario registrado en la BBDD.
+	/*	Metodo encargado de mostrar los datos de un usuario registrado en la BBDD.
 	 *  (non-Javadoc)
 	 * @see org.AATTAA.DNIE.UsuarioDAOInterface#leeUsuario()
 	 */
@@ -54,7 +54,7 @@ public class UsuariosDAO implements UsuarioDAOInterface{
 	}
 	
 
-	/*	Método encargado de realizar la búsqueda de un usuario en la BBDD.
+	/*	Metodo encargado de realizar la busqueda de un usuario en la BBDD.
 	 *  (non-Javadoc)
 	 * @see org.AATTAA.DNIE.UsuarioDAOInterface#BuscarUsuario(java.lang.String, java.lang.String)
 	 */

@@ -25,5 +25,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Practica_4_AATTAA2/Controlador-Java-DNIe.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

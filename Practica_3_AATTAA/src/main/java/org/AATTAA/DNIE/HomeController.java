@@ -34,7 +34,7 @@ public class HomeController {
 	
 	
 	/**
-	 * Respuesta del servidor GET al accceder a la URL mostrando la página principal.
+	 * Respuesta del servidor GET al accceder a la URL mostrando la pagina principal.
 	 * @param locale
 	 * @param model
 	 * @return vista que se devuelve al cliente
@@ -42,12 +42,12 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET) 
 	public String home(Locale locale, Model model) {
 		
-		return "index"; // Te envía a la página principal
+		return "index"; // Te envia a la página principal
 	}
 	
 	/**
 	 * 
-	 * Método para comprobar si un usuario está registrado mediante su NIF y su NICK, 
+	 * Metodo para comprobar si un usuario esta registrado mediante su NIF y su NICK, 
 	 * en caso de no estarlo  lo redirecciona al NoExiste.jsp(Posibilidad de registrarte), 
 	 * y en caso contrario al Existe.jsp (Muestra los datos del usuario guardados en la BBDD).
 	 * 
@@ -79,14 +79,14 @@ public class HomeController {
 	
 	
 	/**
-	 * Método encargado de registrar al nuevo usuario mediante la lectura de su DNIe.
-	 * El método recoge sus datos y los guarda en un objeto nusuario. Comprueba que se ha introducido una tarjeta, en caso contrario lo notifica y lo redirecciona a la página principal.
+	 * Metodo encargado de registrar al nuevo usuario mediante la lectura de su DNIe.
+	 * El metodo recoge sus datos y los guarda en un objeto nusuario. Comprueba que se ha introducido una tarjeta, en caso contrario lo notifica y lo redirecciona a la pagina principal.
 	 * 
 	 * @param request
 	 * @param locale
 	 * @param model
 	 * @return vista que se devuelve al cliente
-	 * @exception La excepción recogerá el error,en el caso de que no se detecte en el tarjetero el DNI y devolvera a la vista home
+	 * @exception La excepcion recogera el error,en el caso de que no se detecte en el tarjetero el DNI y devolvera a la vista home
 	 */
 	@RequestMapping(value = "/Registro", method = RequestMethod.POST)
 	public String registropost(HttpServletRequest request,Locale locale, Model model) {
